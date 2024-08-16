@@ -25,5 +25,5 @@ To get started with the project, follow these steps:
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/your-username/who-wants-to-be-a-millionaire.git
+   git clone https://github.com/Christabel091/who-wants-to-be-a-millionaire.git
    ```
