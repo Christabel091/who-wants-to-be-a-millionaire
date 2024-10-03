@@ -16,20 +16,20 @@
   font-size: 25px;
 }
 
-.anwsers {
+.answers {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 10px;
 }
-.anwser {
+.answer {
   width: 40%;
   padding: 10px;
   align-items: center;
   border: 2px solid white;
   border-radius: 16px;
-  background: linear-gradient(#871818, black);
+  background: linear-gradient(#351070, black);
   font-size: 20px;
   text-align: center;
   justify-content: center;
@@ -37,6 +37,55 @@
   font-weight: bold;
 }
 
-.anwser:hover {
+.answer:hover {
   background-color: greenyellow;
+}
+
+.answer:hover,
+.answer.active {
+  background: mediumblue;
+}
+
+.answer.correct {
+  animation: correct 3s ease forwards;
+}
+@keyframes correct {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
+  }
+
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#100241, black);
+  }
+
+  62%,
+  100% {
+    background: rgb(32, 189, 32);
+  }
+}
+
+.answer.wrong {
+  animation: wrong 3s ease forwards;
+}
+@keyframes wrong {
+  0%,
+  22%,
+  42% {
+    background: mediumblue;
+  }
+
+  20%,
+  40%,
+  60% {
+    background: linear-gradient(#100241, black);
+  }
+
+  62%,
+  100% {
+    background: crimson;
+  }
 }
