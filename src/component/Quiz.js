@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "./Quiz.css";
 import useSound from "use-sound";
-// import correct from "../../assets/correct.mp3";
-// import wrong from "../../assets/wrong.mp3";
-import play from "../../assets/play.mp3";
-
+import play from "../assets/play.mp3";
+import correct from "../assets/correct.mp3";
+import wrong from "../assets/wrong.mp3";
 const Quiz = ({ data, setStopTime, questionNumber, setQuestionNumber }) => {
   const [question, setQuestion] = useState(null);
   const [selectedAnwser, setSelectedAnwser] = useState(null);
   const [clickedAnwser, setClickedAnwser] = useState("answer");
   const [playSound] = useSound(play);
-
+  const [correctAnswer] = useSound(correct);
+  const [wrongAnswer] = useSound(wrong);
   useEffect(() => {
     playSound();
   }, [playSound]);
@@ -30,12 +30,18 @@ const Quiz = ({ data, setStopTime, questionNumber, setQuestionNumber }) => {
       setClickedAnwser(answer.correct ? "answer correct" : "answer wrong")
     );
 
-    delay(6000, () => {
+    delay(4000, () => {
       if (answer.correct) {
-        setQuestionNumber((prev) => prev + 1);
-        setSelectedAnwser(null);
+        correctAnswer();
+        delay(2000, () => {
+          setQuestionNumber((prev) => prev + 1);
+          setSelectedAnwser(null);
+        });
       } else {
-        setStopTime(true);
+        wrongAnswer();
+        delay(1000, () => {
+          setStopTime(true);
+        });
       }
     });
   };
